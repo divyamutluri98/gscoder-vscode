@@ -1,0 +1,45 @@
+{
+	"name": "gscoder-vscode-rebrand",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Rebrand automation toolkit for the GSCODER VS Code fork",
+	"type": "module",
+	"scripts": {
+		"rebrand": "tsx rebrand.ts",
+		"rebrand:dry-run": "tsx rebrand.ts --dry-run",
+		"generate-icons": "tsx rebrand.ts --generate-icons-only",
+		"typecheck": "tsc --noEmit",
+		"test": "playwright test",
+		"test:ui": "playwright test --ui",
+		"test:selenium": "node tests/selenium/test.js",
+		"test:all": "node tests/automation/run-all-tests.js",
+		"build": "tsc",
+		"dev": "tsx watch",
+		"start": "node server.js",
+		"lint": "eslint src --ext .ts,.tsx",
+		"format": "prettier --write \"src/**/*.ts\""
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.44.0",
+		"@types/node": "^24.0.0",
+		"@types/selenium-webdriver": "^4.1.22",
+		"@typescript-eslint/eslint-plugin": "^7.0.0",
+		"@typescript-eslint/parser": "^7.0.0",
+		"eslint": "^8.57.0",
+		"png-to-ico": "^2.1.8",
+		"png2icons": "^2.0.1",
+		"prettier": "^3.2.5",
+		"selenium-webdriver": "^4.18.1",
+		"sharp": "^0.34.2",
+		"tsx": "^4.20.3",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"unrar": "^0.2.0",
+		"express": "^4.18.2",
+		"lowdb": "^6.1.1"
+	}
+}

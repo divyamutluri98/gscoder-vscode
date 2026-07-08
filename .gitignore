@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+/coverage
+/playwright-report/
+/test-results/
+/playwright/.cache/
+
+# Production
+/dist
+/build
+/out
+
+# Misc
+.DS_Store
+*.pem
+.vscode-test/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build artifacts
+.vscode/
+*.vsix
+*.dmg
+*.exe
+*.deb
+*.rpm
+
+# Training data
+.ide-training-data/
+.gscoder-metrics.db
+
+# Backups
+.rebrand-backup/
+
+# Cache
+.yarn-cache/
+.eslintcache

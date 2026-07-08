@@ -1,0 +1,60 @@
+{
+	"$schema": "./brand.config.schema.json",
+	"brand": {
+		"nameShort": "GSCODER",
+		"nameLong": "GSCODER IDE",
+		"applicationName": "gscoder",
+		"dataFolderName": ".gscoder",
+		"sharedDataFolderName": ".gscoder-shared",
+		"urlProtocol": "gscoder",
+		"companyName": "GSCODER",
+		"authorName": "GSCODER Team",
+		"authorEmail": "team@gscoder.com",
+		"repositoryUrl": "https://github.com/your-org/gscoder-vscode",
+		"reportIssueUrl": "https://github.com/your-org/gscoder-vscode/issues/new",
+		"licenseUrl": "https://github.com/your-org/gscoder-vscode/blob/main/LICENSE"
+	},
+	"platform": {
+		"win32DirName": "GSCODER",
+		"win32NameVersion": "GSCODER IDE",
+		"win32RegValueName": "GSCODER",
+		"win32ShellNameShort": "G&SCODER",
+		"win32MutexName": "gscoder",
+		"win32TunnelServiceMutex": "gscoder-tunnelservice",
+		"win32TunnelMutex": "gscoder-tunnel",
+		"win32AppUserModelId": "GSCODER.IDE",
+		"darwinBundleIdentifier": "com.gscoder.ide",
+		"linuxIconName": "gscoder",
+		"serverApplicationName": "gscoder-server",
+		"serverDataFolderName": ".gscoder-server",
+		"tunnelApplicationName": "gscoder-tunnel",
+		"agentsTelemetryAppName": "gscoder-agents"
+	},
+	"telemetry": {
+		"enableTelemetry": false,
+		"enabledTelemetryLevels": {
+			"error": false,
+			"usage": false
+		},
+		"removeTelemetryMachineId": true,
+		"showTelemetryOptOut": false,
+		"yourBrandTelemetry": {
+			"enabled": false,
+			"provider": "your-brand",
+			"endpoint": "https://telemetry.yourbrand.example/v1/collect",
+			"instrumentationKey": "REPLACE_WITH_YOUR_INSTRUMENTATION_KEY",
+			"crashReportingEndpoint": "https://crashes.yourbrand.example/report",
+			"sessionSamplingRate": 0,
+			"_comment": "Replace placeholder URLs and keys, then set enabled:true and enableTelemetry:true when your pipeline is ready."
+		}
+	},
+	"package": {
+		"name": "gscoder-dev",
+		"displayName": "GSCODER IDE Development Build"
+	},
+	"assets": {
+		"masterLogo": "branding/logo-master.png",
+		"monoLogo": "branding/logo-mono.png",
+		"generateFromMaster": true
+	}
+}

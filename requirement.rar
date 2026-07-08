@@ -1,0 +1,42 @@
+Cursor’s engineering team (Anysphere) built the software by solving three core problems: UI control, AI orchestration, and context retrieval.
+
+1. The Core Foundation: A Hard Fork of VS Code
+Instead of writing an extension for Visual Studio Code (like GitHub Copilot historically did), Cursor is a direct fork of the open-source VS Code codebase.
+
+Why a fork? VS Code’s extension API restricts what plugins can do. By forking the codebase, the Cursor team compiles and ships their own editor binary. This gives them low-level access to the text buffer, rendering pipeline, file explorer, and terminal.
+
+The Benefit: It allows them to build native UI elements like inline multi-line diff overlays, fluid predictive tab completions, and custom multi-panel interfaces (like Composer) that would be architecturally impossible as a simple plugin.
+
+The Catch: It retains 100% compatibility with your existing VS Code themes, keybindings, and extensions, though the team must manually merge upstream updates from Microsoft regularly.
+
+2. The Context Engine (Codebase Indexing)
+For an AI to give accurate answers, it needs to understand your entire project, not just the file you are looking at. Cursor handles this via a sophisticated background retrieval pipeline:
+
+Tree-Sitter Parsing: Instead of splitting your code into random chunks by line count, Cursor uses Tree-sitter to parse your files into actual abstract syntax trees, breaking code down cleanly by function and class boundaries.
+
+Merkle Trees for Syncing: To prevent uploading gigabytes of code constantly, Cursor uses a Merkle tree of file hashes. It tracks local changes and syncs only the modified files with their servers every few minutes.
+
+Vector Database & Reranking: Code snippets are converted into embeddings and stored in a high-performance vector database (specifically utilizing Turbopuffer). When you ask a question or use @codebase, a fine-tuned 7B model (like a customized CodeLlama) reranks up to 500,000 tokens of context to pull the most relevant snippets.
+
+3. High-Speed Inference (How "Cursor Tab" is so fast)
+One of Cursor's biggest technical feats is generating code completions before your next keystroke makes them obsolete. They achieve this using a concept called Speculative Edits/Decoding:
+
+Draft Tokens: When you edit code, most of the file stays exactly the same. Cursor uses your existing source code as "draft tokens."
+
+Parallel Processing: Instead of generating code token-by-token from scratch, their custom inference backend feeds the chunks of your existing file to a large model (like a 70B model) in parallel. The model accepts the unchanged chunks in bulk and only generates new tokens where it predicts a change, pushing speeds up to ~1,000 tokens/second (a massive speedup over traditional LLM generation).
+
+Rapid Reinforcement Learning: Their completion models are retrained every 90 minutes via a reinforcement learning loop based on what suggestions developers accept or reject globally, deploying multiple checkpoints a day.
+
+4. Prompt Engineering via "Priompt"
+Managing what goes into an LLM prompt when you have a 272,000-token context window is highly complex. Cursor open-sourced a framework called Priompt (Priority Prompt) to handle this.
+
+Priompt compiles prompts using JSX components where every piece of data (e.g., open files, lint errors, git diffs) is assigned a priority score.
+
+If the combined context exceeds the model's token limit, Priompt uses a binary search algorithm to instantly drop the lowest-priority elements, ensuring the model always gets the absolute best context available without breaking.
+
+5. Agentic Workflows (Composer & Cloud Agents)
+Cursor includes advanced multi-file editing workflows like Composer and Agent Mode.
+
+Instead of editing a single line, these features use specialized AI orchestration layers to plan an architecture change (e.g., "add a JWT authentication system").
+
+The agent maps out dependencies, spawns isolated background VMs to test code, runs terminal commands, and edits multiple files simultaneously while checking for breaking changes across service boundaries.
