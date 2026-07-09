@@ -2,16 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.cjs",
+      "src": "api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/server.cjs"
+      "dest": "/api/index.js"
     }
-  ],
-  "installCommand": "npm install",
-  "buildCommand": "npm run build"
+  ]
 }
