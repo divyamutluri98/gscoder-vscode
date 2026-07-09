@@ -1,9 +1,4 @@
-const express = require('express');
-const app = express();
-
-app.use(express.static('public'));
-
-app.get('/', (req, res) => {
+module.exports = (req, res) => {
   res.send(`
     <!DOCTYPE html>
     <html lang="en">
@@ -60,28 +55,4 @@ app.get('/', (req, res) => {
     </body>
     </html>
   `);
-});
-
-app.get('/features', (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>GSCODER - Features</title>
-      <style>
-        body { font-family: sans-serif; background: #1e1e1e; color: #d4d4d4; padding: 2rem; }
-        h1 { color: #007acc; }
-      </style>
-    </head>
-    <body>
-      <h1>GSCODER Features</h1>
-      <p>All 16 phases implemented successfully</p>
-      <a href="/">← Back to Home</a>
-    </body>
-    </html>
-  `);
-});
-
-module.exports = app;
+};
