@@ -28,7 +28,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'node server.js',
+    command: 'node server.cjs',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
   },

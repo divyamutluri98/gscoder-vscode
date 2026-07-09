@@ -13,7 +13,7 @@ test('branding is visible', async ({ page }) => {
 
 test('navigation works', async ({ page }) => {
   await page.goto('/');
-  const navLink = page.locator('nav a').first();
+  const navLink = page.locator('nav a').nth(1); // Click Features link (second link)
   await navLink.click();
   await expect(page).toHaveURL(/.*features/);
 });

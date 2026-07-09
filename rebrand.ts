@@ -17,6 +17,7 @@
  */
 
 import { randomUUID } from 'node:crypto';
+import { pathToFileURL } from 'node:url';
 import {
 	copyFileSync,
 	existsSync,

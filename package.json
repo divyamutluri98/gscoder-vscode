@@ -15,7 +15,7 @@
 		"test:all": "node tests/automation/run-all-tests.js",
 		"build": "tsc",
 		"dev": "tsx watch",
-		"start": "node server.js",
+		"start": "node server.cjs",
 		"lint": "eslint src --ext .ts,.tsx",
 		"format": "prettier --write \"src/**/*.ts\""
 	},
